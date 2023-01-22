@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        {% load static %}
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Biblioteca Virtual</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static '/blog2/assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static '/blog2/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" style="color:red;">
+                <p style="transform:translate(0,50%); text-align:center;">Bienvenido: {{ user.username }}</p>
+                <a href="{% url 'editaravatar' %}"><img src="{{ avatar }}" width="40px" height="40px" style="margin-right: 20px"></a>
+                </a>
+                {% endif %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}" >Inicio </a></li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sugerenciascrear' %}">Propuestas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'acercademi' %}">Acerca de mi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'enviar_mensaje' %}">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cerrarsesion' %}">Salir</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registroeditar' %}">Editar usuario</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'ingreso' %}">Ingresar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}">Registrate</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {% block Pagina %}
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4" style="background-image: url('https://img.freepik.com/fotos-premium/libros-antiguos-estanterias-biblioteca-antigua-concepto-educacion-literatura-ilustracion-3d_505080-15.jpg?w=2000')">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Bienvenido a mi humilde biblioteca virtual</h1>
+                    <h3 class="lead mb-4" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Aca vas a poder conseguir varios libros en formato epub, mas el respectivo analisis de cada uno!</h3>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    <div class="card mb-4">
+                        <a href="{% url 'libro1' %}"><img class="card-img-top" src="https://sites.google.com/site/pelliculacieii/_/rsrc/1468744361987/config/customLogo.gif?revision=1" alt="..." /></a>
+                        <div class="card-body">
+                            <div class="small text-muted">Enero 10, 2023</div>
+                            <h2 class="card-title">El nombre de la rosa</h2>
+                            <p class="card-text">Dejamos aca un indispensable de la literatura. Un policial ambientado en la Edad Media. Pasen y vean!</p>
+                            <a class="btn btn-primary" href="{% url 'libro1' %}">Reseña y descarga!</a>
+                        </div>
+                    </div>
+                    <!-- Nested row for non-featured blog posts-->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{% url 'libro2' %}"><img class="card-img-top" src="https://m.media-amazon.com/images/I/81CMj7SNKvL.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">Enero 8, 2023</div>
+                                    <h2 class="card-title h4">Africanus, el hijo del consul</h2>
+                                    <p class="card-text">Primera parte de una trilogia ambientada en la Republica de Roma. Toma lugar durante la Segunda Guerra Punica y sigue de cerca la vida de dos de sus protagonistas: Publio Cornelio Escipion, y Anibal Barca.</p>
+                                    <a class="btn btn-primary" href="{% url 'libro2' %}">Reseña y descarga!</a>
+                                </div>
+                            </div>
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{% url 'libro3' %}"><img class="card-img-top" src="https://www.isliada.org/static/images/2020/11/Cinco-semanas-en-globo.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">Enero 6, 2023</div>
+                                    <h2 class="card-title h4">Cinco semanas en globo</h2>
+                                    <p class="card-text">Clasico de clasicos, un libro de referencia del gran Julio Verne</p>
+                                    <a class="btn btn-primary" href="{% url 'libro3' %}">Reseña y descarga!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{% url 'libro4' %}"><img class="card-img-top" src="https://i.pinimg.com/736x/66/77/f5/6677f5368b73e9c50b57751af5e3a2c8.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">Enero 4, 2023</div>
+                                    <h2 class="card-title h4">Dracula</h2>
+                                    <p class="card-text">Ni mas ni menos que una de las novelas de terror mas importantes de la historia, libro que inspiro las mas diversas adaptaciones, y que al dia de hoy se mantiene vigente. Dracula, obra culmine del gran Bram Stoker!</p>
+                                    <a class="btn btn-primary" href="{% url 'libro4' %}">Reseña y descarga!</a>
+                                </div>
+                            </div>
+                             <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{% url 'libro5' %}"><img class="card-img-top" src="https://contentv2.tap-commerce.com/cover/large/9789877254419_1.jpg?id_com=1113" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">Enero 2, 2023</div>
+                                    <h2 class="card-title h4">Los pilares de la tierra</h2>
+                                    <p class="card-text">Quien podria creer que una historia cuyo eje central gire en torno a la construccion de una catederal en la Inglaterra del siglo XI pudiera ser tan atrapante.</p>
+                                    <a class="btn btn-primary" href="{% url 'libro5' %}">Reseña y descarga!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                <!-- Search widget-->
+                {% if user.is_authenticated %}
+                <br>
+                <div class="card mb-4">
+                    <div class="card-header">Queres colaborar? Podes ingresar aca tu propio posteo!</div>
+                    <div class="card-body">
+                        <div class="input-group">
+
+
+                                <a class="btn btn-outline-info" href="{% url 'posteocrear' %}">Ingresar un libro</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                 {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

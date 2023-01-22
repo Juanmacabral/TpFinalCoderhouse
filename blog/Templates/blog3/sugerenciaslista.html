@@ -1,0 +1,42 @@
+{% extends "blog3/padre.html" %}
+
+{% load static %}
+
+{% block Pagina %}
+
+<header class="py-5 bg-light border-bottom mb-4" style="background-image: url('https://img.freepik.com/fotos-premium/libros-antiguos-estanterias-biblioteca-antigua-concepto-educacion-literatura-ilustracion-3d_505080-15.jpg?w=2000')">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Las sugerencias de nuestros usuarios!</h1>
+                </div>
+            </div>
+        </header>
+
+<center><h3>{{ mensaje }}</h3></center>
+{% for suger in sugers %}
+
+
+<br>
+<br>
+
+
+
+<p> <strong>Libro:</strong> {{ suger.titulo }} </p>
+<p> <strong>Autor de la obra:</strong> {{ suger.autor }} </P>
+<p> <strong>Genero:</strong> {{ suger.genero }} </P>
+<p> <strong>Año de publicacion:</strong>{{ suger.anio }} </P>
+
+<br>
+<br>
+<br>
+<div class="col-md-6">
+
+        <a class="btn btn-outline-success" style="margin-left: 300px" href="#!">Editar</a>
+        <a class="btn btn-outline-danger" style="margin-left: 300px" href="{% url 'sugerenciaseliminar' suger.id %}">Eliminar</a>
+    </div>
+
+
+{% endfor %}
+
+
+{% endblock %}

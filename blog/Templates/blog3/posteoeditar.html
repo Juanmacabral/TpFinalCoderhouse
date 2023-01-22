@@ -1,0 +1,33 @@
+{% extends "blog3/padre.html" %}
+
+{% load static %}
+
+{% block Pagina %}
+
+<header class="py-5 bg-light border-bottom mb-4" style="background-image: url('https://img.freepik.com/fotos-premium/libros-antiguos-estanterias-biblioteca-antigua-concepto-educacion-literatura-ilustracion-3d_505080-15.jpg?w=2000')">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Posteos pendientes del subir al blog!</h1>
+                </div>
+            </div>
+        </header>
+
+
+<br>
+
+<form action="{% url 'posteoeditar' pos.id %}" method="POST"  enctype="multipart/form-data"> {% csrf_token %}
+
+<table style="margin-left: 70px" >
+
+    {{ form.as_table }}
+
+</table>
+
+<br>
+<input type="submit" style="margin-left: 270px" style="margin-inline-end: 200000em;" value="Guardar cambio" >
+
+</form>
+
+
+
+{% endblock %}

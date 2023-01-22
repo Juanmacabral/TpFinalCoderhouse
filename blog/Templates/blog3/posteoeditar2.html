@@ -1,0 +1,33 @@
+{% extends "blog3/padre.html" %}
+
+{% load static %}
+
+{% block Pagina %}
+
+<header class="py-5 bg-light border-bottom mb-4" style="background-image: url('https://img.freepik.com/fotos-premium/libros-antiguos-estanterias-biblioteca-antigua-concepto-educacion-literatura-ilustracion-3d_505080-15.jpg?w=2000')">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Posteos pendientes del subir al blog!</h1>
+                </div>
+            </div>
+        </header>
+
+
+
+<br>
+
+<ul>
+    <h1>Posteos</h1>
+
+    {% for posts in post %}
+    <li>{{ posts.fechaposteo }} {{ posts.titulo}} {{ posts.autor }} {{ posts.anio }} {{ posts.imagenlibro }} {{ posts.sinopsis }}
+        {{ posts.imagenautor }} {{ posts.sobreautor }}</li>
+
+    <a class="btn btn-danger" href="{% url 'posteoeliminar'  pos.id  %}">Eliminar </a>
+    <a class="btn btn-success" href="{% url 'posteoeditar'  pos.id  %}">Editar</a>
+    {% endfor %}
+
+    <h2>{{ mensaje }}</h2>
+
+</ul>
+{% endblock %}

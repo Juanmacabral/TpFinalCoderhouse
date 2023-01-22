@@ -1,0 +1,41 @@
+{% extends "blog3/padre.html" %}
+
+{% load static %}
+
+{% block Pagina %}
+
+<header class="py-5 bg-light border-bottom mb-4" style="background-image: url('https://img.freepik.com/fotos-premium/libros-antiguos-estanterias-biblioteca-antigua-concepto-educacion-literatura-ilustracion-3d_505080-15.jpg?w=2000')">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder" style="color: #c8c8c8; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Posteos pendientes del subir al blog!</h1>
+                </div>
+            </div>
+        </header>
+
+<center><h3>{{ mensaje }}</h3></center>
+
+{% for post in posts %}
+
+
+<br>
+<br>
+<p> <strong>Fecha de publicacion:</strong> {{ post.fechaposteo }} </p>
+<p> <strong>Libro:</strong> {{ post.titulo }} </P>
+<p> <strong>Autor:</strong> {{ post.autor }} </P>
+<p> <strong>Año de publicacion:</strong>{{ post.anio }} </P>
+<img src="{{ post.imagenlibro.url }}" alt="" style="margin-left: 70px" width="450" height="300">
+<p> <strong>sinopsis:</strong>{{ post.sinopsis }} </P>
+<img src="{{ post.imagenautor.url }}" alt="" style="margin-left: 70px" width="450" height="300">
+<p> <strong>Acerca del autor:</strong>{{ post.sobreautor }} </P>
+
+<a class="btn btn-outline-success" style="margin-left: 25px" href="{% url 'posteoeditar' post.id %}">Editar</a>
+<a class="btn btn-outline-danger" style="margin-left: 200px" href="{% url 'posteoeliminar' post.id %}">Eliminar</a>
+
+<br>
+<br>
+<br>
+
+{% endfor %}
+
+
+{% endblock %}
