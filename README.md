@@ -3,8 +3,6 @@ Entrega final para el curso de Python en Coderhouse
 Alumno: Juan Maria Rodriguez Cabral
 DNI: 35321415
 
-link al video : https://youtu.be/5GwJ5el5-Rs
-
 Pagina web, estilo blog, realizada como proyecto final del curso de python de Coderhouse.
 
 Librerias a descargar:
